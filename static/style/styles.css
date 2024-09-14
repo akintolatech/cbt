@@ -1,0 +1,355 @@
+
+:root {
+
+    --airforceblue: #088ccd;
+    --grey: whitesmoke;
+    --gtc: #b38c6f;
+    --adptblue: #3f77f2;
+    --rad: 10px;
+    --red: red;
+    --darkairforceblue : #041d55;
+
+}
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--grey);
+    /* background-image: url(../img/gtc.png);
+    background-size: contain; */
+}
+
+a {
+    text-decoration: none;
+    color: var(--darkairforceblue);
+}
+
+h1 {
+    color: var  (--airforceblue);
+
+}
+
+ul{
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    /* color: red; */
+
+
+}
+
+li:hover {
+    background-color: rgba(128, 128, 128, 0.177);
+}
+
+p a {
+    text-decoration: none;
+    color: #088ccd;
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+input[type="text"]{
+    width: 100%;
+    height: 50px;
+    margin: 15px 0;
+    border-radius: 3px;
+    border: 1px solid var(--gtc);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"]{
+        width: 100%;
+    /* background-color: rgb(85, 85, 234); */
+    background-color: var(--airforceblue);
+    color: white;
+    height: 50px;
+    margin: auto;
+    margin: 10px 0;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: all ease 200ms;
+}
+
+input[type="checkbox"]{
+    margin: 5px 0;
+}
+
+input[type="file"] {
+    margin: 12px 0;
+}
+
+
+
+#id_classes {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    /* background-color: rgb(85, 85, 234); */
+    background-color: var(--airforceblue);
+    color: white;
+    height: 50px;
+    margin: auto;
+    margin: 10px 0;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+    box-sizing: border-box;
+    transition: all ease 200ms;
+}
+
+button:hover {
+    background-color: var(--grey);
+    color: var(--airforceblue);
+    border: 2px solid var(--airforceblue);
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.sec-btn {
+    color: #088ccd;
+    background-color: var(--grey);
+    border: 2px solid #088ccd;
+}
+
+.sec-btn a{
+    color: #088ccd;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+
+}
+
+form {
+    padding: 0;
+    margin: 0;
+}
+/* index specific styles */
+
+.dialogue {
+    width: 50%;
+    padding: 30px;
+    /* border: 1px solid red; */
+    /* box-sizing: content-box; */
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px #0342621e;
+}
+
+@media screen and (max-width: 460px){
+
+    .dialogue {
+        width: 100%;
+    }
+
+}
+
+.error-msg {
+    list-style-type: none;
+    color: red;
+}
+
+
+/* Arms specific styles */
+.arm-container {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-radius: var(--rad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.arm-container button {
+    width: 120px;
+    height: 32px;
+
+}
+
+
+/* snackbar css */
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar, #snackbar2 {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: var(--red); /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.show {
+    visibility: visible !important; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+} 
+
+#input_text {
+    width: 100%;
+}
+
+
+/* header specific styles */
+.site-id-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* edit questions specific styles */
+.opt-idx {
+
+    margin-right: 20px;
+
+}
+
+input[type="radio"] {
+    cursor: pointer;
+}
+
+.question-text-container {
+    display: flex;
+    /* flex-direction: space-between; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.icn-box-container {
+    display: flex;
+}
+
+.icn-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+.icn-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.icn {
+    width: 40px;
+    height: 40px;
+    /*border: 1px solid #088ccd;*/
+    margin-right: 15px;
+}
+
+/* Popup specific styles */
+#popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #cccccc; */
+    /* filter: blur(2px) opacity(0.2); */
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.backdrop {
+    display: none;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #cccccc;
+    filter: blur(2px) opacity(0.5);
+}
+
+#popupContent{
+    width: 60%;
+    /* height: 80%; */
+    padding: 30px;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 30px;
+}
+
+#closePopup {
+    margin-left: 96%;
+}
+
+#popchart {
+    width: 100%;
+    height: 100%;
+}
+
+#chartcard {
+    width: 100%;
+    height: 266px;
+}
