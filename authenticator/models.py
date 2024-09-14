@@ -43,8 +43,8 @@ class StudentUser(AbstractBaseUser, PermissionsMixin):
     passport = models.ImageField(upload_to="passports", blank=True, null=True)
     phone = models.CharField(max_length=11, blank=True, null=True)
 
-    classes = models.ForeignKey(ClassGroup, on_delete=models.CASCADE)
-    form = models.ForeignKey(ClassGroup, on_delete=models.CASCADE)
+    # classes = models.ForeignKey(ClassGroup, on_delete=models.CASCADE)
+    # form = models.ForeignKey(Form, on_delete=models.CASCADE)
 
     total_score = models.IntegerField(default=2)
     position = models.IntegerField(default=0)

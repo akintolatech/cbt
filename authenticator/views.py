@@ -9,4 +9,4 @@ def index(request):
         "msg": msg
     }
 
-    return render(request, "authenticator/index.html", context)
+    return render(request, "authenticator/login.html", context)
