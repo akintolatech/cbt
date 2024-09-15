@@ -1,0 +1,69 @@
+
+
+.gen-container {
+    width: 768px;
+    margin: auto;
+    /* border: 1px solid greenyellow; */
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.gen-item {
+    width: 49%;
+    /* border: 1px solid greenyellow; */
+}
+
+.gen-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen  and (max-width:768px) {
+    .gen-container {
+        flex-direction: column;
+    }
+
+    .gen-item {
+        width: 49%;
+        /* border: 1px solid greenyellow; */
+    }
+}
+
+.passport-frame {
+    width: 330px;
+    height: 330px;
+    /* border: 1px solid red ; */
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 5px rgba(1, 1, 56, 0.187);
+    border-radius: 10px;
+}
+
+.passport-frame img {
+    width: 100%;
+    height: 100%;
+}
+
+.laurel-container {
+    display: flex;
+}
+
+.laurel {
+    /* border: 1px solid red; */
+}
+
+.laurel-imgbox {
+    width: 80px;
+
+
+}
+
+.laurel-imgbox img {
+    max-width: 100%;
+    height: auto;
+}
+
+.laurel h6 {
+    margin: 0;
+}
