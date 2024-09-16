@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def index(request):
+def login_to_cbt(request):
     msg = "Wired"
 
     context = {
@@ -10,3 +10,4 @@ def index(request):
     }
 
     return render(request, "authenticator/login.html", context)
+

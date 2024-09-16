@@ -8,6 +8,8 @@
     --rad: 10px;
     --red: red;
     --darkairforceblue : #041d55;
+    --btn-border-rad : 10px;
+    --container-rad : 30px;
 
 }
 
@@ -62,97 +64,7 @@ p a {
     background-color: white;
 }
 
-input[type="text"]{
-    width: 100%;
-    height: 50px;
-    margin: 15px 0;
-    border-radius: 3px;
-    border: 1px solid var(--gtc);
-    padding: 10px;
-    box-sizing: border-box;
-}
 
-input[type="submit"]{
-        width: 100%;
-    /* background-color: rgb(85, 85, 234); */
-    background-color: var(--airforceblue);
-    color: white;
-    height: 50px;
-    margin: auto;
-    margin: 10px 0;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 3px;
-    box-sizing: border-box;
-    transition: all ease 200ms;
-}
-
-input[type="checkbox"]{
-    margin: 5px 0;
-}
-
-input[type="file"] {
-    margin: 12px 0;
-}
-
-
-
-#id_classes {
-    width: 100%;
-}
-
-button {
-    width: 100%;
-    /* background-color: rgb(85, 85, 234); */
-    background-color: var(--airforceblue);
-    color: white;
-    height: 50px;
-    margin: auto;
-    margin: 10px 0;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 30px;
-    box-sizing: border-box;
-    transition: all ease 200ms;
-}
-
-button:hover {
-    background-color: var(--grey);
-    color: var(--airforceblue);
-    border: 2px solid var(--airforceblue);
-}
-
-button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-
-.sec-btn {
-    color: #088ccd;
-    background-color: var(--grey);
-    border: 2px solid #088ccd;
-}
-
-.sec-btn a{
-    color: #088ccd;
-}
-
-button a{
-    text-decoration: none;
-    color: white;
-
-}
-
-form {
-    padding: 0;
-    margin: 0;
-}
 /* index specific styles */
 
 .dialogue {

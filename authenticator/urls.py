@@ -4,5 +4,5 @@ from . import views
 app_name = "authenticator"
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.login_to_cbt, name="login"),
 ]
