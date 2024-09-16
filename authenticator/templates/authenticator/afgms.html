@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandant Trials</title>
+    <link type="text/css" href="{% static 'style/styles.css' %}" rel="stylesheet"/>
+    <link type="image/x-icon" href="{% static 'img/afgms.ico' %}" rel="icon" />
+    <link type="text/css" href="{% static 'style/afgms.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="center-container">
+        <div class="picture-cta-container">
+            <div class="picture">
+                <img src="{% static 'img/afgmscomdt.jpg' %}" />
+<!--                <p>Air Cde HR Garba</p>-->
+<!--                <p>AFGMS First Commandant</p>-->
+            </div>
+            <div class="cta">
+                <center>
+                <div class="logo-imgbox">
+                    <img src="../../static/img/afgms.png" />
+                </div>
+                
+                <h2>AFGMS CBT</h2>
+<!--                <p>The Commandant’s Trial test aims to quickly measure the academic-->
+<!--                   performance and preparedness of SS3 students towards external exams-->
+<!--                </p>-->
+                <div class="cta-btns">
+                    <a href="{% url 'login' %}"><button class="sec-btn">Login</button></a>
+                    <a href="{% url 'register' %}"><button>Register</button></a>
+                </div>
+                </center>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
