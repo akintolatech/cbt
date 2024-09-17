@@ -6,35 +6,44 @@ from django.conf import settings
 
 # Create your models here.
 
+class Form(models.Model):
+    name = models.CharField(max_length=33)
+    form_img = models.ImageField(upload_to='form_images/', null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
+
+    form = models.OneToOneField(
+        Form,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+
     date_of_birth = models.DateField(blank=True, null=True)
 
     photo = models.ImageField(
-        upload_to='users/%Y/%m/%d/',
+        upload_to='passport',
         blank=True
     )
 
     def __str__(self):
         return f'Profile of {self.user.username}'
 
-# class Form(models.Model):
-#     name = models.CharField(max_length=33)
-#     form_img = models.ImageField(upload_to='form_images/', null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.name
-#
-#
-# class ClassGroup(models.Model):
-#     name = models.CharField(max_length=33)
-#     class_form = models.ForeignKey(Form, on_delete=models.CASCADE)
-#
-#
+
+
+class ClassGroup(models.Model):
+    name = models.CharField(max_length=33)
+    class_form = models.ForeignKey(Form, on_delete=models.CASCADE)
+
+
 # class StudentUserManager(BaseUserManager):
 #     def create_user(self, username, password=None):
 #         user = self.model(username=username)
