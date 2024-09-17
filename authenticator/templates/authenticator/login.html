@@ -28,7 +28,7 @@
             <div class="item" height="400px">
                 <h1>Login</h1>
                 <p style="color:#088ccd;">Access your Dashboard using your registered credentials!!!</p>
-                <form method="post">
+                <form method="POST">
 
                     {% if error %}
                         <p style="color:red; margin: 0;">{{ error }}</p>
@@ -37,7 +37,7 @@
                     {{ form.as_p }}
                     {% csrf_token %}
                     <p><input type="submit" value="Log in"></p>
-                    <p>If you don't have an Account, <a href="{% url 'authenticator:register' %}">Register here!</a></p>
+
 
                 </form>
             </div>

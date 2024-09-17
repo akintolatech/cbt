@@ -73,7 +73,7 @@ h1 {
     border-radius: 24px;
 }
 
-input[type="text"]{
+input[type="text"], input[type="password"]{
     width: 96%;
     height: 50px;
     margin: 15px 0;
