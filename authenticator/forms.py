@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from .models import Profile
+from .models import Profile, ClassArm
 
 
 class LoginForm(forms.Form):
@@ -19,6 +19,12 @@ class UserRegistrationForm(forms.ModelForm):
     #     widget=forms.PasswordInput
     # )
 
+    class_arm = forms.ModelChoiceField(
+        queryset=ClassArm.objects.all(),
+        required=True,
+        label="Select your class"
+    )
+
     class Meta:
         model = get_user_model()
         fields = ['username', 'password']
@@ -35,13 +41,18 @@ class UserRegistrationForm(forms.ModelForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['email']
 
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['date_of_birth', 'photo']
+        fields = ['photo', 'phone_number', 'date_of_birth']
+
+        # Overriding the widget for the 'photo' field to include an id
+    def __init__(self, *args, **kwargs):
+        super(ProfileEditForm, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget.attrs.update({'id': 'image_input_id'})
 
 
 
