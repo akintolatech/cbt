@@ -1,11 +1,13 @@
 from django.contrib import admin
-from .models import Profile, Form  #StudentUser, ClassGroup,
+from .models import (
+    Profile,
+    Form,
+    ClassGroup
+)
 
 # Register your models here.
 admin.site.register(Form)
-# admin.site.register(ClassGroup)
-# admin.site.register(StudentUser)
-
+admin.site.register(ClassGroup)
 
 
 @admin.register(Profile)
