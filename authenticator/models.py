@@ -15,15 +15,18 @@ class Form(models.Model):
         return self.name
 
 
-class ClassGroup(models.Model):
+class ClassArm(models.Model):
     name = models.CharField(max_length=33)
-    class_form = models.ForeignKey(Form, on_delete=models.CASCADE)
-    class_group = models.OneToOneField(
+    # class_form = models.ForeignKey(Form, on_delete=models.CASCADE)
+    class_form = models.ForeignKey(
         Form,
         on_delete=models.CASCADE,
         blank=True,
         null=True
     )
+
+    def __str__(self):
+        return self.name
 
 
 class Profile(models.Model):
@@ -32,19 +35,22 @@ class Profile(models.Model):
         on_delete=models.CASCADE
     )
 
-    class_group = models.OneToOneField(
-        ClassGroup,
+    photo = models.ImageField(
+        upload_to='passport',
+        blank=True
+    )
+
+    class_arm = models.OneToOneField(
+        ClassArm,
         on_delete=models.CASCADE,
         blank=True,
         null=True
     )
 
+    phone_number = models.CharField(max_length=33)
     date_of_birth = models.DateField(blank=True, null=True)
 
-    photo = models.ImageField(
-        upload_to='passport',
-        blank=True
-    )
+
 
     def __str__(self):
         return f'Profile of {self.user.username}'
