@@ -1,0 +1,15 @@
+.msg {
+    margin-bottom: 100px;
+}
+
+.msg img {
+    margin-bottom: 30px;
+}
+
+.center-box {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
