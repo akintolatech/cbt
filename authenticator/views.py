@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import (
     LoginForm,
     UserRegistrationForm,
@@ -28,12 +28,12 @@ def user_login(request):
                         "msg": "wired"
                     }
                     login(request, user)
-                    return render(request, "authenticator/student-dashboard.html", context)
+                    return redirect("authenticator:student_dashboard")
                 else:
                     return HttpResponse("You have been Banned from the system")
             else:
                 form = LoginForm()
-                return render(request, "authenticator/login.html", {"form": form, "error": "Invalid Login"})
+            return render(request, "authenticator/login.html", {"form": form})
     else:
         form = LoginForm()
     return render(request, "authenticator/login.html", {"form": form})
@@ -71,6 +71,12 @@ def register(request):
         'authenticator/register.html',
         {'user_form': user_form}
     )
+
+
+@login_required
+def student_dashboard(request):
+    context = {"error": "Invalid Login"}
+    return render(request, "authenticator/student_dashboard.html", context)
 
 
 @login_required

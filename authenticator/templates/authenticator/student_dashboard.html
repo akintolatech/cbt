@@ -5,60 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebScrape v0.5</title>
-    <link type="text/css" href="{% static 'styles/student-dashboard.css' %}" rel="stylesheet" />
-    <link type="text/css" href="{% static 'styles/switch.css' %}" rel="stylesheet" />
-    <link type="text/css" href="{% static 'styles/auth.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'style/student-dashboard.css' %}" rel="stylesheet" />
     <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
-
-
-    <script>
-
-        function fetchLogs() {
-            fetch("{% url 'botengine:get_logs' %}")
-                .then(response => response.json())
-                .then(data => {
-                    const recentLogsContainer = document.getElementById('recentLogsContainer');
-                    const allLogsContainer = document.getElementById('allLogsContainer');
-
-                    // Clear both containers
-                    recentLogsContainer.innerHTML = '';
-                    allLogsContainer.innerHTML = '';
-
-                    // Populate recent logs container
-                    data.recent_logs.forEach(log => {
-                        const logElement = document.createElement('p');
-                        logElement.innerHTML = `<strong>${log.counter}.</strong> ${log.details} on ${log.created}`;
-                        recentLogsContainer.appendChild(logElement);
-                    });
-
-                    // Populate all logs container
-                    data.all_logs.forEach(log => {
-                        const logElement = document.createElement('p');
-                        logElement.innerHTML = `<strong>${log.counter}.</strong> ${log.details} on ${log.created}`;
-                        allLogsContainer.appendChild(logElement);
-                    });
-
-                    // Determine the number of items in comprehensive logs
-                    const totalLogsCount = data.all_logs.length;
-
-                    // Optionally, display the count on the page
-                    const totalLogsCountElement = document.querySelector(".log-count");
-                    if (totalLogsCountElement) {
-                        totalLogsCountElement.textContent = totalLogsCount;
-                    }
-
-
-
-
-                });
-        }
-
-        // Refresh logs every 10 seconds
-        setInterval(fetchLogs, 5000);
-
-    </script>
-
-
 </head>
 <body>
 
@@ -252,12 +200,6 @@
     
 </body>
 
-
-
-
-
-
-
     <script>
 
 
@@ -296,34 +238,4 @@
 
     <script language="javascript" src="{% static 'js/toggle.js' %}"></script>
 
-    <script>
-        document.getElementById('status-switch').addEventListener('change', function() {
-            const isChecked = this.checked;
-            const botId = "{{ bot.id }}";
-            const csrfToken = "{{ csrf_token }}";
-
-            let statusElement = document.querySelector(".status-text");
-            if (isChecked){
-                statusElement.textContent = "Active";
-            }else{
-                statusElement.textContent = "Idle";
-            }
-
-            fetch("{% url 'botengine:change_status' bot.id %}", {
-                method: "POST",
-                headers: {
-                    "X-CSRFToken": csrfToken,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ status: isChecked ? 'AE' : 'IE' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-</script>
 </html>
