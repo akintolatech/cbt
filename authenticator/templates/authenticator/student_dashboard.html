@@ -149,7 +149,8 @@
                     </div>
 
                     <div class="logs-container" >
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                        <div class="logs-container-header">
                             <h3>Available Tests</h3>
 
                             <a href="#">
@@ -161,27 +162,22 @@
 
                                         
                         <div class="test-container">
+
+                            {% for test in tests %}
                 
                             <div class="test-card">
 
                                 <center>
 
-                                    <img src=".." />
-                                    <h3>...</h3>
-                <!--                    <progress id="progress" value="{{ total }}" max="50"></progress>-->
-                <!--                        <label for="progress">-->
-                <!--                            {{ total }}/{{ test.ace }}-->
-                <!--                        </label>-->
-                                  
-                                        <!-- <a href=""><button class="sec-btn" disabled >Locked</button></a> -->
-                               
-                                        <a href=""><button class="sec-btn" >Write</button></a>
-                               
-
+                                    <img src="{{ test.image.url }}" />
+                                    <h3>{{ test.title }}</h3>
+                                    <a href=""><button class="sec-btn" >Write</button></a>
 
                                 </center>
 
                             </div>
+
+                            {% endfor %}
 
                         </div>
 

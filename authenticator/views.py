@@ -9,6 +9,7 @@ from .forms import (
     ProfileEditForm
 )
 from .models import Profile
+from tester.models import Test
 
 
 # Create your views here.
@@ -82,10 +83,13 @@ def register(request):
 def student_dashboard(request):
     user_form = UserEditForm(instance=request.user)
     profile_form = ProfileEditForm(instance=request.user.profile)
+    student_form = request.user.profile.class_arm.class_form
+    tests = Test.objects.all().filter(form=student_form)
 
     context = {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        "tests": tests
     }
 
     return render(request, "authenticator/student_dashboard.html", context)

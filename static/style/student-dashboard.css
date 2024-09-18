@@ -172,9 +172,9 @@ a {
 }
 
 .student-passport {
-    width: 90px;
-    height: 90px;
-    border: 1px solid red;
+    width: 96px;
+    height: 96px;
+    /* border: 1px solid red; */
     margin-right: 24px;
 }
 
@@ -216,9 +216,9 @@ a {
     /* width: 100%; */
     /*width: 27%;
     height: 300px*/
-    /* border: 1px solid red; */
+    border: 1px solid #088bcd25;
     background-color: white;
-    border-radius: 10px;
+    border-radius: var(--rad);
     padding: 30px;
     box-shadow: 1px 1px 5px rgba(1, 1, 56, 0.077);
     box-sizing: content-box;
@@ -250,34 +250,25 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .logs-container {
     width: 100%;
     background-color: white;
-    height: 100%;
     margin-block: 24px;
-    padding: 30px;
+    padding: 15px 30px;
     box-sizing: border-box;
     border-radius: var(--rad);
 }
 
+.logs-container-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px;
+}
+
 .logs-container h3 {
-    margin: 0;
     color: #707070;
+    margin: 0;
 }
 
 

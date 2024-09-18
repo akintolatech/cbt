@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "authenticator.apps.AuthenticatorConfig"
+    "authenticator.apps.AuthenticatorConfig",
+    "tester.apps.TesterConfig"
 ]
 
 MIDDLEWARE = [
