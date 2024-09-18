@@ -1,0 +1,329 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebScrape v0.5</title>
+    <link type="text/css" href="{% static 'styles/student-dashboard.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'styles/switch.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'styles/auth.css' %}" rel="stylesheet" />
+    <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
+
+
+    <script>
+
+        function fetchLogs() {
+            fetch("{% url 'botengine:get_logs' %}")
+                .then(response => response.json())
+                .then(data => {
+                    const recentLogsContainer = document.getElementById('recentLogsContainer');
+                    const allLogsContainer = document.getElementById('allLogsContainer');
+
+                    // Clear both containers
+                    recentLogsContainer.innerHTML = '';
+                    allLogsContainer.innerHTML = '';
+
+                    // Populate recent logs container
+                    data.recent_logs.forEach(log => {
+                        const logElement = document.createElement('p');
+                        logElement.innerHTML = `<strong>${log.counter}.</strong> ${log.details} on ${log.created}`;
+                        recentLogsContainer.appendChild(logElement);
+                    });
+
+                    // Populate all logs container
+                    data.all_logs.forEach(log => {
+                        const logElement = document.createElement('p');
+                        logElement.innerHTML = `<strong>${log.counter}.</strong> ${log.details} on ${log.created}`;
+                        allLogsContainer.appendChild(logElement);
+                    });
+
+                    // Determine the number of items in comprehensive logs
+                    const totalLogsCount = data.all_logs.length;
+
+                    // Optionally, display the count on the page
+                    const totalLogsCountElement = document.querySelector(".log-count");
+                    if (totalLogsCountElement) {
+                        totalLogsCountElement.textContent = totalLogsCount;
+                    }
+
+
+
+
+                });
+        }
+
+        // Refresh logs every 10 seconds
+        setInterval(fetchLogs, 5000);
+
+    </script>
+
+
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="sidebar-item">
+
+            <div class="ham-nav" onclick="Toggle">
+                <img class="ham-icon" src="{% static 'img/ham-close.svg' %}" />
+            </div>
+
+            <div class="app-id">
+
+                <div class="logo-box">
+                    <img src="{% static 'img/bot.png' %}" />
+                </div>
+
+                <div class="app-details">
+                    <h3>WebScrape v0.5</h3>
+                    <div class="switch-mech">
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="dashboard-tab-container">
+
+                <div class="dashboard-tab" onclick="tabToggle('home', this)" id="defaultOpen">
+                    <div class="icn-box">
+                        <img src="{% static 'img/home.svg' %}"  />
+                    </div>
+                    <h3>Dashboard</h3>
+                </div>
+
+                <div class="dashboard-tab" onclick="tabToggle('accounts', this)" >
+                    <div class="icn-box">
+                        <img src="{% static 'img/account.svg' %}"  />
+                    </div>
+                    <h3>Accounts</h3>
+                </div>
+
+                <div class="dashboard-tab" onclick="tabToggle('about', this)">
+                    <div class="icn-box">
+                        <img src="{% static 'img/database.svg' %}" />
+                    </div>
+                    <h3>Data Logs</h3>
+                </div>
+
+                <div class="dashboard-tab" onclick="tabToggle('projects', this)">
+                    <div class="icn-box">
+                        <img src="{% static 'img/warn.svg' %}" />
+                    </div>
+                    <h3>Errata</h3>
+                </div>
+
+                <a href="{% url 'authenticator:logout' %}">
+                    <div class="dashboard-tab">
+                        <div class="icn-box">
+                            <img src="{% static 'img/logout.svg' %}" />
+                        </div>
+                        <h3>Log Out</h3>
+                    </div>
+                </a>
+
+
+            </div>
+
+        </div>
+
+        <div class="main-item">
+
+            <div class="main-item-wrap">
+
+                <!-- Main dashboard section-->
+                <div id="home" class="tabcontent">
+
+                    <div class="status-container">
+
+                        <div class="status-tab">
+                            <h3>Bot Status</h3>
+                            <h2 class="status-text">...</h2>
+
+                        </div>
+                        <div class="status-tab">
+                            <h3>Successful Logins</h3>
+                            <h2>...</h2>
+                        </div>
+                        <div class="status-tab">
+                            <h3>Successful Bookings</h3>
+                            <h2>...</h2>
+                        </div>
+                    </div>
+
+                    <div class="logs-container" >
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Recent Logs</h3>
+
+                            <a href="#">
+                                <div class="icn-box small">
+                                    <img src="{% static 'img/x.svg' %}" />
+                                </div>
+                            </a>
+                        </div>
+
+                        <div id="recentLogsContainer">...
+                            <!-- Recent logs will appear here -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Accounts section -->
+                <div id="accounts" class="tabcontent">
+                    <!-- Comprehensive logs -->
+                    <div class="logs-container">
+
+                        <div>
+                            <h3>Accounts</h3>
+                        </div>
+
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="gen-container">
+                                <div class="gen-item">
+                                    <div class="passport-frame">
+                                        {% if profile_form.instance.photo %}
+                                            <img id="image_preview_id" src="{{ profile_form.instance.photo.url }}" alt="User Photo" class="passport-photo">
+                                        {% else %}
+                                            <img id="image_preview_id" src="{% static 'img/user.jpg' %}" alt="Default Photo" class="passport-photo" style="display: none;">
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="gen-item">
+                                    <div>
+                                        <h1>Edit your account</h1>
+                                        <p>You can edit your account using the following form:</p>
+
+                                        {{ user_form.as_p }}
+                                        {{ profile_form.as_p }}
+
+                                        <p><input type="submit" value="Save changes"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Comprehensive logs section -->
+                <div id="about" class="tabcontent">
+                    <div class="logs-container">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>Data Logs entries  (<b class="log-count">...</b>)</h3>
+
+                            <a href="#">
+                                <div class="icn-box small">
+                                    <img src="{% static 'img/x.svg' %}" />
+                                </div>
+                            </a>
+                        </div>
+
+                        <div id="allLogsContainer">...
+                            <!-- All logs will appear here -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Errata section -->
+                <div id="projects" class="tabcontent">
+                    <!-- Comprehensive logs -->
+                    <div class="logs-container">
+                        <div>
+                            <h3>Errata</h3>
+                        </div>
+                        <p>Errata</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+
+
+
+
+
+
+
+    <script>
+
+
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click(); 
+
+        function tabToggle ( section, element) {
+
+            
+            var tabcontent;
+            var iconBox;
+
+
+            // remove sections except default
+            tabcontent = document.querySelectorAll(".tabcontent");
+
+            for (var i=0; i < tabcontent.length; i++){
+                tabcontent[i].style.display = "none";
+                // element.style.backgroundColor= "";
+            }
+
+
+            dashboardTab = document.querySelectorAll(".dashboard-tab");
+            for ( var i = 0; i < dashboardTab.length; i++) {
+                dashboardTab[i].style.backgroundColor = "";
+            }
+
+            // show specific content
+            document.getElementById(section).style.display = "block";
+            element.style.backgroundColor="#fff7ff1f"
+
+        };
+
+    </script>
+
+    <script language="javascript" src="{% static 'js/toggle.js' %}"></script>
+
+    <script>
+        document.getElementById('status-switch').addEventListener('change', function() {
+            const isChecked = this.checked;
+            const botId = "{{ bot.id }}";
+            const csrfToken = "{{ csrf_token }}";
+
+            let statusElement = document.querySelector(".status-text");
+            if (isChecked){
+                statusElement.textContent = "Active";
+            }else{
+                statusElement.textContent = "Idle";
+            }
+
+            fetch("{% url 'botengine:change_status' bot.id %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ status: isChecked ? 'AE' : 'IE' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+</script>
+</html>

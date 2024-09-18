@@ -37,7 +37,8 @@ class Profile(models.Model):
 
     photo = models.ImageField(
         upload_to='passport',
-        blank=True
+        blank=True,
+        # default=""
     )
 
     class_arm = models.ForeignKey(

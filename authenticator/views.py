@@ -28,7 +28,7 @@ def user_login(request):
                         "msg": "wired"
                     }
                     login(request, user)
-                    return render(request, "authenticator/dashboard.html", context)
+                    return render(request, "authenticator/student-dashboard.html", context)
                 else:
                     return HttpResponse("You have been Banned from the system")
             else:
