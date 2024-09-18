@@ -75,7 +75,14 @@ def register(request):
 
 @login_required
 def student_dashboard(request):
-    context = {"error": "Invalid Login"}
+    user_form = UserEditForm(instance=request.user)
+    profile_form = ProfileEditForm(instance=request.user.profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
     return render(request, "authenticator/student_dashboard.html", context)
 
 
