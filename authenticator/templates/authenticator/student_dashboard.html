@@ -8,7 +8,32 @@
     <link type="text/css" href="{% static 'style/student-dashboard.css' %}" rel="stylesheet" />
     <link type="text/css" href="{% static 'style/auth.css' %}" rel="stylesheet" />
     <link type="text/css" href="{% static 'style/generator.css' %}" rel="stylesheet"/>
+    <!-- <link type="text/css" href="{% static 'style/dashboard.css' %}" rel="stylesheet"/> -->
+    <!-- <link type="text/css" href="{% static 'style/styles.css' %}" rel="stylesheet"/> -->
     <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const imageInput = document.getElementById('image_input_id');
+        const imagePreview = document.getElementById('image_preview_id');
+
+        imageInput.addEventListener('change', function(){
+            const file = imageInput.files[0];
+            if(file){
+                const reader = new FileReader();
+
+                reader.onload = function(e){
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = "block";  // Show the image preview if hidden
+                }
+
+                reader.readAsDataURL(file);
+            }else{
+                imagePreview.src = "";
+                imagePreview.style.display = "none";  // Hide the image preview if no file is selected
+            }
+        });
+    });
+</script>
 </head>
 <body>
 
@@ -23,16 +48,16 @@
             <div class="app-id">
 
                 <div class="logo-box">
-                    <img src="{% static 'img/bot.png' %}" />
+                    <img src="{% static 'img/afmsid.png' %}" />
                 </div>
 
                 <div class="app-details">
-                    <h3>WebScrape v0.5</h3>
-                    <div class="switch-mech">
-
-
-
-                    </div>
+                    <h3>AFMS CBT</h3>
+<!--                    <h4>Strive to Excel</h4>-->
+<!--                  -->
+<!--                    <div class="switch-mech">-->
+<!--                        <h4>Strive to Excel</h4>-->
+<!--                    </div>-->
                 </div>
 
             </div>
@@ -57,7 +82,7 @@
                     <div class="icn-box">
                         <img src="{% static 'img/database.svg' %}" />
                     </div>
-                    <h3>Data Logs</h3>
+                    <h3>Results</h3>
                 </div>
 
                 <div class="dashboard-tab" onclick="tabToggle('projects', this)">
@@ -90,24 +115,42 @@
 
                     <div class="status-container">
 
-                        <div class="status-tab">
-                            <h3>Bot Status</h3>
-                            <h2 class="status-text">...</h2>
+                        <div class="status-tab">        
+                            <!-- <h3>Student Bio</h3> -->
+                            <div class="student-bio">
+                                <div class="student-passport">
+                                    {% if request.user.profile.photo %}
+                                        <img src="{{ request.user.profile.photo.url }}" />
+                                    {% else %}
+                                        <img src="{% static 'img/user.jpg' %}" />
+                                    {% endif %}
+                                </div>
+                                <div class="student-details">
+                                    <p>
+                                        Name: <strong style="color:#088ccd;">JACM  {{ request.user.username }} </strong> <br/>
+                                        Arm: {{ request.user.profile.class_arm }}
+                                    </p>
+
+                                    <div>
+                                        <progress id="progress" value="15" max="60"></progress>
+                                        <label for="progress">
+                                            15/60<br/>
+                                            Position in Class: 8/32
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
-                        <div class="status-tab">
-                            <h3>Successful Logins</h3>
-                            <h2>...</h2>
-                        </div>
-                        <div class="status-tab">
-                            <h3>Successful Bookings</h3>
-                            <h2>...</h2>
-                        </div>
+
+
+
+
                     </div>
 
                     <div class="logs-container" >
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3>Recent Logs</h3>
+                            <h3>Available Tests</h3>
 
                             <a href="#">
                                 <div class="icn-box small">
@@ -116,8 +159,30 @@
                             </a>
                         </div>
 
-                        <div id="recentLogsContainer">...
-                            <!-- Recent logs will appear here -->
+                                        
+                        <div class="test-container">
+                
+                            <div class="test-card">
+
+                                <center>
+
+                                    <img src=".." />
+                                    <h3>...</h3>
+                <!--                    <progress id="progress" value="{{ total }}" max="50"></progress>-->
+                <!--                        <label for="progress">-->
+                <!--                            {{ total }}/{{ test.ace }}-->
+                <!--                        </label>-->
+                                  
+                                        <!-- <a href=""><button class="sec-btn" disabled >Locked</button></a> -->
+                               
+                                        <a href=""><button class="sec-btn" >Write</button></a>
+                               
+
+
+                                </center>
+
+                            </div>
+
                         </div>
 
                     </div>

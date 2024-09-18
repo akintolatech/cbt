@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -37,6 +37,11 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, "authenticator/login.html", {"form": form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('authenticator:login')
 
 
 def register(request):
