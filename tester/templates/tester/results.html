@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/x-icon" href="{% static 'img/afms logo.ico' %}" rel="icon" />
+    <link type="text/css" href="{% static 'style/styles.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'style/dashboard.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'style/auth.css' %}" rel="stylesheet" />
+<!--    <script src="{% static 'js/timer.js' %}"></script>-->
+    <script>
+        window.onload = function(){
+            window.localStorage.clear()
+        };
+
+        //Prevent Data
+    history.pushState(null, null, );
+    window.addEventListener('popstate', function(event) {
+      history.pushState(null, null, );
+    });
+
+    </script>
+
+</head>
+<body>
+
+    <div id="main">
+
+            <center style="margin-top: 60px;">
+
+                {%  for itm in results %}
+                <img src="{% static 'img/ribbon.png' %}" alt="" width="200px"/>
+                <h1>Congrats {{  itm.user }} </h1>
+                <p>
+                    You have successfully written the <br/><b style="color:#38c16f;">{{ itm.test }} </b>  <br/>
+                    you scored <br/>
+                    <h1 class="score" style="color: green;"> {{ itm.score }}</h1>
+                </p>
+                {% endfor %}
+
+            </center>
+
+            <center>
+            <a href="{% url 'authenticator:student_dashboard' %}"><button>Go to Dashboard</button></a>
+            <a href="{% url 'authenticator:login' %}"><button class="logout-btn">Log Out</button></a>
+            </center>
+    </div>
+
+    <script>
+        let score = document.querySelector(".score");
+        if(parseInt(score.textContent) < 5){
+            score.style.color = "red";
+        }
+
+        console.log("wired", typeof(parseInt(score.textContent)));
+    </script>
+
+</body>
+</html>

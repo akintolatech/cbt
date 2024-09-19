@@ -171,7 +171,7 @@
 
                                     <img src="{{ test.image.url }}" />
                                     <h3>{{ test.title }}</h3>
-                                    <a href=""><button class="sec-btn" >Write</button></a>
+                                    <a href="{% url 'tester:test_questions' test.id %}"><button class="sec-btn" >Write</button></a>
 
                                 </center>
 
@@ -224,11 +224,12 @@
                     </div>
                 </div>
 
-                <!-- Comprehensive logs section -->
+                <!-- Results Section -->
                 <div id="about" class="tabcontent">
-                    <div class="logs-container">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3>Data Logs entries  (<b class="log-count">...</b>)</h3>
+                    <div class="logs-container" >
+
+                        <div class="logs-container-header">
+                            <h3>My results</h3>
 
                             <a href="#">
                                 <div class="icn-box small">
@@ -237,8 +238,26 @@
                             </a>
                         </div>
 
-                        <div id="allLogsContainer">...
-                            <!-- All logs will appear here -->
+
+                        <div class="test-container">
+
+                            {% for result in results %}
+
+                            <div class="test-card">
+
+                                <center>
+
+                                    <img src="{{ result.test_key.image.url }}" />
+                                    <h3>{{ result.test }}</h3>
+                                    <h6 style="margin: 0;">{{ result.date }}</h6>
+                                    <h2 style="margin: 0;">{{ result.score }}</h2>
+
+                                </center>
+
+                            </div>
+
+                            {% endfor %}
+
                         </div>
 
                     </div>

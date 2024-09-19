@@ -46,4 +46,4 @@ class TestResult(models.Model):
     date = models.DateTimeField('date submitted')
 
     def __str__(self):
-        return f"{ str(self.user) } { self.test.name } Test Result"
+        return f"{ str(self.user_key) } { self.test } Test Result"

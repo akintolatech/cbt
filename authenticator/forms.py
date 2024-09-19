@@ -5,22 +5,19 @@ from .models import Profile, ClassArm
 
 class LoginForm(forms.Form):
     username = forms.CharField(
+        label="",
         widget=forms.TextInput(attrs={'placeholder': 'Enter your username'})
     )
     password = forms.CharField(
+        label="",
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': 'Enter your SVC No (00/0000 format)',
+                'maxlength': '7',
                 'pattern': r'\d{2}/\d{4}'
             }
         )
     )
-
-    # Remove labels by setting them to an empty string
-    labels = {
-        'username': "",
-        'password': "",
-    }
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -38,6 +35,7 @@ class UserRegistrationForm(forms.ModelForm):
             'password': forms.PasswordInput(
                 attrs={
                     'placeholder': 'Enter your SVC No (00/0000 format)',
+                    'maxlength': '7',
                     'pattern': r'\d{2}/\d{4}'
                 }
             ),
