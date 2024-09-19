@@ -1,3 +1,19 @@
+
+:root {
+
+    --airforceblue: #088ccd;
+    --grey: whitesmoke;
+    --gtc: #b38c6f;
+    --adptblue: #3f77f2;
+    --rad: 10px;
+    --red: red;
+    --darkairforceblue : #041d55;
+    --btn-border-rad : 10px;
+    --container-rad : 30px;
+
+}
+
+
 .legal {
     font-size: 10pt;
     /* color: var(--prycolor); */
@@ -20,6 +36,7 @@
     transform: translate(-50%, -50%);
     /* border: 1px solid red; */
 }
+
 form p{
     margin: 0;
     padding: 0;

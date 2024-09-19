@@ -56,6 +56,26 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ["username", "password", 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Enter your username'}),
+            'password': forms.PasswordInput(
+                attrs={
+                    'placeholder': 'Enter your SVC No (00/0000 format)',
+                    'maxlength': '7',
+                    'pattern': r'\d{2}/\d{4}'
+                }
+            ),
+        }
+        labels = {
+            'username': '',
+            'password': '',
+        }
+
+        # Remove help text for all fields by setting an empty dictionary
+        help_texts = {
+            'username': None,
+            'password': None,
+        }
 
 
 class ProfileEditForm(forms.ModelForm):

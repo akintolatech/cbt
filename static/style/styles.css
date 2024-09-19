@@ -190,7 +190,7 @@ input[type="radio"] {
 }
 
 
-
+/* 
 .icn-box-container {
     display: flex;
 }
@@ -200,7 +200,6 @@ input[type="radio"] {
     height: 20px;
     margin-right: 12px;
     cursor: pointer;
-    /* border: 1px solid red; */
 }
 
 .icn-box img {
@@ -211,9 +210,9 @@ input[type="radio"] {
 .icn {
     width: 40px;
     height: 40px;
-    /*border: 1px solid #088ccd;*/
+
     margin-right: 15px;
-}
+} */
 
 /* Popup specific styles */
 #popupContainer {

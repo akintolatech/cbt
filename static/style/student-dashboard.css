@@ -152,7 +152,8 @@ a {
 }
 
 .status-tab {
-    height: 145px;
+    /* height: 145px; */
+    height: 120px;
     background-color: white;
     /* margin-bottom: 24px; */
     border-radius: var(--rad);
@@ -172,8 +173,8 @@ a {
 }
 
 .student-passport {
-    width: 96px;
-    height: 96px;
+    width: 76px;
+    height: 76px;
     /* border: 1px solid red; */
     margin-right: 24px;
 }
@@ -199,17 +200,6 @@ a {
 
 }
 
-@media screen and (min-width:760px){
-
-    .test-container {
-        /* display: grid; */
-        grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 15px;
-        row-gap: 15px;
-        
-    }
-}
-
 
 
 .test-card {
@@ -219,11 +209,26 @@ a {
     border: 1px solid #088bcd25;
     background-color: white;
     border-radius: var(--rad);
-    padding: 30px;
+    padding: 24px;
     box-shadow: 1px 1px 5px rgba(1, 1, 56, 0.077);
     box-sizing: content-box;
     /* border: ; */
     margin-bottom: 15px;
+}
+
+@media screen and (min-width:760px){
+
+    .test-container {
+        /* display: grid; */
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 15px;
+        row-gap: 15px;
+        
+    }
+
+    .test-card {
+        margin-bottom: 0;
+    }
 }
 
 .test-card:hover {
@@ -233,15 +238,9 @@ a {
 
 .test-card img {
     width: 140px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
-.test-card video {
-    width: 100%;
-    height: 300px;
-    /* margin-top: 10px; */
-    /* height: 100%; */
-}
 
 .test-card button:hover {
     background-color: #088ccd;
@@ -253,8 +252,8 @@ a {
 .logs-container {
     width: 100%;
     background-color: white;
-    margin-block: 24px;
-    padding: 15px 30px;
+    margin-top: 24px;
+    padding: 15px 30px 30px 30px;
     box-sizing: border-box;
     border-radius: var(--rad);
 }
