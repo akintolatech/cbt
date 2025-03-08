@@ -48,12 +48,12 @@
             <div class="app-id">
 
                 <div class="logo-box">
-                    <img src="{% static 'img/afmsid.png' %}" />
+                    <img src="{{ app_info.logo.url }}" />
                 </div>
 
                 <div class="app-details">
-                    <h3>AFMS CBT</h3>
-<!--                    <h4>Strive to Excel</h4>-->
+                    <h3>{{ app_info.name }} CBT<br/>{{ app_info.phrase }}</h3>
+                   
 <!--                  -->
 <!--                    <div class="switch-mech">-->
 <!--                        <h4>Strive to Excel</h4>-->
@@ -66,21 +66,21 @@
 
                 <div class="dashboard-tab" onclick="tabToggle('home', this)" id="defaultOpen">
                     <div class="icn-box">
-                        <img src="{% static 'img/home.svg' %}"  />
+                        <img src="{% static 'img/icns/home.svg' %}"  />
                     </div>
                     <h3>Dashboard</h3>
                 </div>
 
                 <div class="dashboard-tab" onclick="tabToggle('accounts', this)" >
                     <div class="icn-box">
-                        <img src="{% static 'img/account.svg' %}"  />
+                        <img src="{% static 'img/icns/account.svg' %}"  />
                     </div>
                     <h3>Accounts</h3>
                 </div>
 
                 <div class="dashboard-tab" onclick="tabToggle('about', this)">
                     <div class="icn-box">
-                        <img src="{% static 'img/database.svg' %}" />
+                        <img src="{% static 'img/icns/cards_star.svg' %}" />
                     </div>
                     <h3>Results</h3>
                 </div>
@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="student-details">
                                     <p>
-                                        Name: <strong style="color:#088ccd;">JACM  {{ request.user.username }} </strong> <br/>
+                                        Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong> <br/>
                                         Arm: {{ request.user.profile.class_arm }}
                                     </p>
 
@@ -143,9 +143,6 @@
 
                         </div>
 
-
-
-
                     </div>
 
                     <div class="logs-container" >
@@ -153,11 +150,11 @@
                         <div class="logs-container-header">
                             <h3>Available Tests</h3>
 
-                            <a href="#">
-                                <div class="icn-box small">
-                                    <img src="{% static 'img/x.svg' %}" />
-                                </div>
-                            </a>
+                          
+                            <div class="icn-box small">
+                                <img src="{% static 'img/icns/test.svg' %}" />
+                            </div>
+                    
                         </div>
 
                                         
@@ -176,7 +173,8 @@
                                 </center>
 
                             </div>
-
+                            {% empty %}
+                                <h3 style="color: red;">No Available Tests </h3>
                             {% endfor %}
 
                         </div>
@@ -255,7 +253,8 @@
                                 </center>
 
                             </div>
-
+                            {% empty %}
+                                <h3 style="color: red;">No Available Results </h3>
                             {% endfor %}
 
                         </div>

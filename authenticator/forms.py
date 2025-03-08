@@ -40,6 +40,7 @@ class UserRegistrationForm(forms.ModelForm):
                 }
             ),
         }
+        
         labels = {
             'username': '',
             'password': '',
@@ -57,12 +58,13 @@ class UserEditForm(forms.ModelForm):
         model = get_user_model()
         fields = ["username", "password", 'email']
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Enter your username'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Enter your username', "readonly": "readonly"}),
             'password': forms.PasswordInput(
                 attrs={
                     'placeholder': 'Enter your SVC No (00/0000 format)',
                     'maxlength': '7',
-                    'pattern': r'\d{2}/\d{4}'
+                    'pattern': r'\d{2}/\d{4}',
+
                 }
             ),
         }
@@ -83,7 +85,7 @@ class ProfileEditForm(forms.ModelForm):
         model = Profile
         fields = ['photo', 'phone_number']
 
-        # Overriding the widget for the 'photo' field to include an id
+        #Todo: fix passport upload
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
