@@ -7,7 +7,7 @@ app_name = "administration"
 urlpatterns = [
     # Add patterns here
     path('', views.administration_dashboard, name='administration'),
-
+    path('test_mgmt', views.test_mgmt, name="test_mgmt")
     # # Users
     # path('users/', views.users, name='users'),
     # path('user_details/<int:user_id>/', views.user_details, name='user_details'),

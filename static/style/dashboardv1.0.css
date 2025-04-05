@@ -17,6 +17,22 @@
 }
 
 
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action_btn {
+    width: 120px;
+    height: 44px;
+    background-color: var(--pry-color);
+    border-radius: 30px;
+    color: var(--fgcolor);
+    cursor: pointer;
+    border: none;
+}
 
 html, body {
     margin: 0;

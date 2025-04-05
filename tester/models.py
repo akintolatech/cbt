@@ -12,6 +12,7 @@ class Test(models.Model):
     form = models.ForeignKey(Form, on_delete=models.CASCADE)
     mark = models.IntegerField(default=1)
     duration = models.IntegerField(default=30)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
         return self.title
