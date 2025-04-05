@@ -25,16 +25,16 @@ def user_login(request):
             )
             if user is not None:
                 if user.is_active:
-                    context = {
-                        "msg": "wired"
-                    }
                     login(request, user)
-                    return redirect("authenticator:student_dashboard")
+                    # Redirect staff users to the admin dashboard
+                    if user.is_staff:
+                        return redirect("administration:administration")
+                    else:
+                        return redirect("authenticator:student_dashboard")
                 else:
                     return HttpResponse("You have been Banned from the system")
             else:
-                form = LoginForm()
-            return render(request, "authenticator/login.html", {"form": form})
+                form.add_error(None, "Invalid credentials")
     else:
         form = LoginForm()
     return render(request, "authenticator/login.html", {"form": form})

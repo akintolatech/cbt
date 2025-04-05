@@ -66,7 +66,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 #Custom context processors
-                "administration.context_processors.app_information"
+                "administration.context_processors.app_information",
+
             ],
         },
     },

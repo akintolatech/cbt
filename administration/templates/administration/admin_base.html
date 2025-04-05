@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator: {% block title %} {% endblock %} </title>
-    <link type="text/css" href="{% static 'styles/dashboard.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'style/dashboardv1.0.css' %}" rel="stylesheet" />
     <!-- <link type="text/css" href="{% static 'styles/shop.css' %}" rel="stylesheet" />
     <link type="text/css" href="{% static 'styles/switch.css' %}" rel="stylesheet" />
     <link type="text/css" href="{% static 'styles/style.css' %}" rel="stylesheet" />
@@ -35,11 +35,11 @@
             <div class="app-id">
 
                 <div class="logo-box">
-                    <img src="{{ business.logo_of_business.url }}" />
+                    <img src="{{ app_info.logo.url }}" />
                 </div>
 
                 <div class="app-details">
-                    <h3>{{ business.name_of_business }}&#8482;</h3>
+                    <h3>{{ app_info.name }}&#8482; Admin</h3>
                 </div>
 
             </div>
@@ -48,25 +48,29 @@
 
                 <a href="{% url 'administration:administration' %}" class="dashboard-tab active" onclick="setActiveTab(event, this)">
                     <div class="icn-box">
-                        <img src="{% static 'img/icons/dashboard.svg' %}" class="dashboard-icon" />
+                        <img src="{% static 'img/icns/dashboard.svg' %}" class="dashboard-icon" />
                     </div>
-                    <h3>Dashbaord</h3>
+                    <h3>Dashboard</h3>
                 </a>
-            
-                <a href="{% url 'administration:users' %}" class="dashboard-tab" onclick="setActiveTab(event, this)">
+              
+                <a href="#" class="dashboard-tab" onclick="setActiveTab(event, this)">
                     <div class="icn-box">
-                        <img src="{% static 'img/icons/accounticon.svg' %}" class="dashboard-icon" />
+                        <img src="{% static 'img/icns/test.svg' %}" class="dashboard-icon" />
                     </div>
-                    <h3>Users</h3>
+                    <h3>Test Mgmt</h3>
                 </a>
 
-                <a href="{% url 'administration:user_deposits' %}" class="dashboard-tab" onclick="setActiveTab(event, this)">
+                  
+             
+
+                <a href="#" class="dashboard-tab" onclick="setActiveTab(event, this)">
                     <div class="icn-box">
-                        <img src="{% static 'img/icons/wallet.svg' %}" class="dashboard-icon" />
+                        <img src="{% static 'img/icns/quiz.svg' %}" class="dashboard-icon" />
                     </div>
-                    <h3>Deposits</h3>
+                    <h3>Question Mgmt</h3>
                 </a>
 
+                {% comment %}
                 <a href="{% url 'administration:user_withdraws' %}" class="dashboard-tab" onclick="setActiveTab(event, this)">
                     <div class="icn-box">
                         <img src="{% static 'img/icons/withdraw.svg' %}" class="dashboard-icon" />
@@ -82,9 +86,11 @@
                     </div>
                     <h3>Whatsapp </h3>
                 </a>
+
+                {% endcomment %}
                 
 
-                <a href="{% url 'landing:landing' %}" class="dashboard-tab" >
+                <a href="" class="dashboard-tab" >
                     <div class="icn-box">
                         <img src="{% static 'img/icons/logout.svg' %}" class="dashboard-icon" />
                     </div>

@@ -4,8 +4,6 @@ from django import forms
 from django.conf import settings
 
 
-# Create your models here.
-
 
 class Form(models.Model):
     name = models.CharField(max_length=33)
