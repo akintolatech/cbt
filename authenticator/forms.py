@@ -13,8 +13,8 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': 'Enter your SVC No (00/0000 format)',
-                'maxlength': '7',
-                'pattern': r'\d{2}/\d{4}'
+                'maxlength': '4',
+                # 'pattern': r'\d{2}/\d{4}'
             }
         )
     )
@@ -35,8 +35,8 @@ class UserRegistrationForm(forms.ModelForm):
             'password': forms.PasswordInput(
                 attrs={
                     'placeholder': 'Enter your SVC No (00/0000 format)',
-                    'maxlength': '7',
-                    'pattern': r'\d{2}/\d{4}'
+                    'maxlength': '4',
+                    # 'pattern': r'\d{2}/\d{4}'
                 }
             ),
         }

@@ -11,10 +11,19 @@ class Test(models.Model):
     is_active = models.BooleanField(default=False)
     form = models.ForeignKey(Form, on_delete=models.CASCADE)
     mark = models.IntegerField(default=1)
+    duration = models.IntegerField(default=30)
 
     def __str__(self):
         return self.title
 
+class TestSession(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    start_time = models.DateTimeField(auto_now_add=True)
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.test.title} session"
 
 class Question(models.Model):
     img = models.ImageField(upload_to='qimg/', null=True, blank=True)

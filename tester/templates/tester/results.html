@@ -11,15 +11,16 @@
     <link type="text/css" href="{% static 'style/auth.css' %}" rel="stylesheet" />
 <!--    <script src="{% static 'js/timer.js' %}"></script>-->
     <script>
+        
         window.onload = function(){
             window.localStorage.clear()
         };
 
         //Prevent Data
-    history.pushState(null, null, );
-    window.addEventListener('popstate', function(event) {
-      history.pushState(null, null, );
-    });
+        history.pushState(null, null, );
+        window.addEventListener('popstate', function(event) {
+        history.pushState(null, null, );
+        });
 
     </script>
 

@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test running...</title>
+    <link type="text/css" href="{% static 'style/styles.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'style/test.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'style/auth.css' %}" rel="stylesheet"/>
+    <!-- <link type="text/css" href="{% static 'style/student-dashboard.css' %}" rel="stylesheet" /> -->
+    <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
+
+
+    <script>
+        var remainingTime = {{ remaining_time }}; // Get time from backend
+    
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            var interval = setInterval(function () {
+                minutes = Math.floor(timer / 60);
+                seconds = timer % 60;
+    
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+    
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    alert("Time is up! Submitting your test...");
+                    document.getElementById("test-form").submit(); // Auto-submit test
+                }
+            }, 1000);
+        }
+    
+        window.onload = function () {
+            var display = document.querySelector('#time');
+            startTimer(remainingTime, display);
+        };
+
+        
+    </script>
+
+
+
+</head>
+<body>
+    <div class="header">
+        <div class="header_wrap">
+            <div class="site_id">
+                <img src="{{ app_info.logo.url }}" />
+            </div>
+
+            <div class="timer_container">
+                <div class="timer_icn_box">
+                    <img src="{% static 'img/icns/timer.svg' %}" />
+                </div>
+                <h4 id="time">00:00</h4>
+            </div>
+
+        </div>
+    </div>
+    <div class="heading_spacer"></div>
+    <main>
+
+       
+
+        <div class="test_container">
+
+            <div class="bio_card">
+                <div class="bio-passport">
+                    {% if request.user.profile.photo %}
+                        <img src="{{ request.user.profile.photo.url }}" />
+                    {% else %}
+                        <img src="{% static 'img/user.jpg' %}" />
+                    {% endif %}
+                </div>
+                <div class="student-details">
+                    <p>
+                        Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong> <br/>
+                        Arm: {{ request.user.profile.class_arm }}
+                    </p>
+    
+                    <div>
+                        <progress id="progress" value="15" max="60"></progress>
+                        <label for="progress">
+                            15/60<br/>
+                            Position in Class: 8/32
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test_box">
+
+                <div class="test_header">
+                    <h2>{{ app_info.name }}</h2>
+                    <h4>{{ test.title }}</h4>
+                    <h4>{{ test.description }}</h4>
+                </div>
+
+                <div class="test_body">
+
+                    <form id="test-form" method="post" action="{% url 'tester:mark' test.id %}">
+                        {% csrf_token %}
+                    
+                        {% for question in questions %}
+                        <fieldset class="question-box">
+                            {% if question.img %}
+                                <img src="{{ question.img.url }}" alt="Question Image" class="question-img">
+                            {% endif %}
+                    
+                            <legend class="question-text">
+                                <strong>{{ forloop.counter }}. {{ question.question_text }}</strong>
+                            </legend>
+                    
+                            <div class="options">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.A }}" required> {{ question.A }}
+                                </label><br>
+                    
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.B }}"> {{ question.B }}
+                                </label><br>
+                    
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.C }}"> {{ question.C }}
+                                </label><br>
+                    
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.D }}"> {{ question.D }}
+                                </label><br>
+                            </div>
+                        </fieldset>
+                        {% endfor %}
+                    
+                        <button type="submit" class="pry-btn" id="submit-btn">Submit Test</button>
+                    </form>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </main>
+</body>
+</html>

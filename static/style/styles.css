@@ -1,7 +1,8 @@
 
 :root {
 
-    --airforceblue: #088ccd;
+    --airforce_old_blue: #088ccd;
+    --airforceblue: #007bff;
     --grey: whitesmoke;
     --gtc: #b38c6f;
     --adptblue: #3f77f2;
