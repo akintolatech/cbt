@@ -44,8 +44,8 @@ class QuestionBank(models.Model):
     D = models.CharField(max_length=100)
     correct_option = models.CharField(max_length=100)
 
-    form = models.ForeignKey(Form, on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    form = models.ForeignKey(Form, on_delete=models.CASCADE, null=True, blank=True)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True, blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
 

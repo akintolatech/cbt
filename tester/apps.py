@@ -6,5 +6,5 @@ class TesterConfig(AppConfig):
     name = 'tester'
 
 
-def ready(self):
-    import tester.signals
+    def ready(self):
+        import tester.signals

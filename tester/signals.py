@@ -8,13 +8,13 @@ def add_question_to_bank(sender, instance, created, **kwargs):
     if created:
         QuestionBank.objects.create(
             question_text=instance.question_text,
-            img=instance.img,
-            imginstr=instance.imginstr,
+            img=instance.img if instance.img else None,
+            imginstr=instance.imginstr if instance.imginstr else "",
             A=instance.A,
             B=instance.B,
             C=instance.C,
             D=instance.D,
             correct_option=instance.correct_option,
-            form=instance.form,
-            subject=instance.subject
+            form=instance.form if instance.form else None,
+            subject=instance.subject if instance.subject else None,
         )
