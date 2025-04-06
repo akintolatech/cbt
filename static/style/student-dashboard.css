@@ -4,7 +4,8 @@ html, body {
 }
 
 :root {
-    --bgcolor: #f5f5f5;
+    /* --bgcolor: #f5f5f5; */
+    --bgcolor: #f4f7fe;
     --darktheme: #120759;
     --rad: 10px;
 }

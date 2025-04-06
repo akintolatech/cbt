@@ -8,7 +8,7 @@ from django.db.models import Count, Sum
 from datetime import date, timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import render
-from .forms import CreateTestForm
+from .forms import CreateTestForm, EditQuestionForm
 
 import json
 
@@ -63,16 +63,19 @@ def create_test(request):
 @staff_member_required
 def edit_test(request, test_id):
     test = Test.objects.get(pk=test_id)
-    # if request.method == "POST":
-    #     form = CreateTestForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.save()
-    #         messages.success(request, "Test created successfully.")
-    #         return redirect("administration:create_test")
-    # else:
-    #     form = CreateTestForm()
-    #
+    questions = Question.objects.filter(test=test_id)
+    if request.method == "POST":
+        form = EditQuestionForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Test created successfully.")
+            return redirect("administration:edit_test")
+    else:
+        form = EditQuestionForm()
+
     context = {
         "test": test,
+        "questions": questions,
+        "form": form
     }
-    return render(request, "administration/test_mgmt/create_test.html",context)
+    return render(request, "administration/test_mgmt/edit_test.html",context)

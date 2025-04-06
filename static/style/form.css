@@ -159,3 +159,60 @@ ul.messages li a.close {
     color: #666;
 }
   
+
+
+button {
+    width: 96%;
+    height: 50px;
+    /* background-color: rgb(85, 85, 234); */
+    background-color: var(--pry-color);
+    color: white;
+    
+    margin: auto;
+    margin: 10px 0;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: var(--btn-border-rad);
+    box-sizing: border-box;
+    transition: all ease 200ms;
+}
+
+button:hover {
+    background-color: var(--grey);
+    color: var(--pry-color);
+    border: 2px solid var(--pry-color);
+}
+
+button:focus {
+    /* background-color: var(--grey);
+    color: var(--airforceblue); */
+    /* border: 2px solid var(--airforceblue); */
+    width: 95%;
+    height: 49px;
+}
+
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.sec-btn {
+    color: #088ccd;
+    background-color: var(--grey);
+    border: 2px solid #088ccd;
+}
+
+.sec-btn a{
+    color: #088ccd;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+
+}

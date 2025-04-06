@@ -95,7 +95,7 @@
                         <td data-label="Date">{{ test.created }}</td>
                         <a>
                         <td data-label="Action">
-                            <a href="#"><img src="{% static 'img/icns/gavel.svg' %}" /></a>
+                            <a href="{% url 'administration:edit_test' test.id %}"><img src="{% static 'img/icns/gavel.svg' %}" /></a>
                         </td>
                     </a>
                       

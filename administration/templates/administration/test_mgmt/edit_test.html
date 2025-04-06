@@ -1,0 +1,136 @@
+{% extends "administration/admin_base.html" %}
+{% load static %}
+{% block title %} EditTest {% endblock %}
+{% block content %}
+
+{% block page_style %}
+<link type="text/css" href="{% static 'style/test.css' %}" rel="stylesheet" />
+<link type="text/css" href="{% static 'style/form.css' %}" rel="stylesheet" />
+<!-- <link type="text/css" href="{% static 'style/auth.css' %}" rel="stylesheet" /> -->
+{% endblock %}
+<!-- Main dashboard section-->
+<div id="home">
+
+    <a href="{% url 'administration:test_mgmt' %}">
+        <div class="back_icn_container">
+            <img src="{% static 'img/icns/back.svg' %}" />
+        </div>
+    </a>
+    {% if messages %}
+  <ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="test_container">
+
+        <div class="bio_card">
+            <div class="bio-passport">
+                {% if test.image %}
+                    <img src="{{ test.image.url }}" />
+                {% else %}
+                    <img src="{% static 'img/user.jpg' %}" />
+                {% endif %}
+            </div>
+            <div class="student-details">
+                <p>
+                    Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong> <br/>
+                    Arm: {{ request.user.profile.class_arm }}
+                </p>
+
+                <div>
+                    <progress id="progress" value="15" max="60"></progress>
+                    <label for="progress">
+                        15/60<br/>
+                        Position in Class: 8/32
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="test_box">
+
+            <div class="test_header">
+                <h2>{{ app_info.name }}</h2>
+                <h4>{{ test.title }}</h4>
+                <h4>{{ test.description }}</h4>
+            </div>
+
+            <div class="test_body">
+
+                <form id="test-form" method="post" action="{% url 'tester:mark' test.id %}">
+                    {% csrf_token %}
+
+                    {% for question in questions %}
+                        <fieldset class="question-box">
+                            {% if question.img %}
+                                <img src="{{ question.img.url }}" alt="Question Image" class="question-img">
+                            {% endif %}
+
+                            <legend class="question-text">
+                                <strong>{{ forloop.counter }}. {{ question.question_text }}</strong>
+                            </legend>
+
+                            <div class="options">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.A }}"
+                                        {% if question.correct_option == question.A %}checked{% endif %} required>
+                                    {{ question.A }}
+                                </label><br>
+
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.B }}"
+                                        {% if question.correct_option == question.B %}checked{% endif %}>
+                                    {{ question.B }}
+                                </label><br>
+
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.C }}"
+                                        {% if question.correct_option == question.C %}checked{% endif %}>
+                                    {{ question.C }}
+                                </label><br>
+
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.D }}"
+                                        {% if question.correct_option == question.D %}checked{% endif %}>
+                                    {{ question.D }}
+                                </label><br>
+                            </div>
+                        </fieldset>
+                    {% endfor %}
+
+                
+                    <button type="submit" class="pry-btn" id="submit-btn">Save Test</button>
+                </form>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    {% comment %}
+    <div class="form_container">
+        <h3>Edit Test for {{ test.title }} </h3>
+        
+     
+       
+        <form method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center>
+                <button type="submit">Save Action</button>
+            </center>
+        </form>
+        
+    
+    </div>
+    {% endcomment %}
+
+
+</div>
+
+
+{% endblock %}
