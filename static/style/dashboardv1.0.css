@@ -11,7 +11,8 @@
     --fgcolor: #ffffff;
     /* --dark: #094D26; */
     --rad: 10px;
-    --pry-color: #4318FF;
+    /* --pry-color: #4318FF; */
+    --pry-color: #007bff;
     --sec-color: #c5c6ff;
     --box-shadow: 0 4px 6px rgba(1, 9, 37, 0.1);
 }
@@ -27,11 +28,11 @@
 .action_btn {
     width: 120px;
     height: 44px;
-    background-color: var(--pry-color);
+    background-color: var(--fgcolor);
     border-radius: 30px;
-    color: var(--fgcolor);
+    color: var(--pry-color);
     cursor: pointer;
-    border: none;
+    border: 2px solid var(--pry-color);
 }
 
 html, body {

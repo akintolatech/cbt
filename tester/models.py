@@ -3,7 +3,13 @@ from django.conf import settings
 from authenticator.models import Form, ClassArm
 
 
-# Create your models here.
+class Subject(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class Test(models.Model):
     title = models.CharField(max_length=33)
     description = models.CharField(max_length=200)
@@ -17,6 +23,7 @@ class Test(models.Model):
     def __str__(self):
         return self.title
 
+
 class TestSession(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
@@ -26,7 +33,29 @@ class TestSession(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.test.title} session"
 
+class QuestionBank(models.Model):
+    question_text = models.CharField(max_length=500)
+    img = models.ImageField(upload_to='qimg/', null=True, blank=True)
+    imginstr = models.CharField(max_length=200, null=True, blank=True)
+
+    A = models.CharField(max_length=100)
+    B = models.CharField(max_length=100)
+    C = models.CharField(max_length=100)
+    D = models.CharField(max_length=100)
+    correct_option = models.CharField(max_length=100)
+
+    form = models.ForeignKey(Form, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.question_text} ({self.subject.name} - {self.form})"
+
+
 class Question(models.Model):
+    form = models.ForeignKey(Form, on_delete=models.CASCADE, null=True, blank=True)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True, blank=True)
     img = models.ImageField(upload_to='qimg/', null=True, blank=True)
     imginstr = models.CharField( max_length=200, null=True, blank=True)
     question_text = models.CharField(max_length=500)
@@ -36,6 +65,7 @@ class Question(models.Model):
     C = models.CharField(max_length=100)
     D = models.CharField(max_length=100)
     correct_option = models.CharField(max_length=100)
+
 
     def __str__(self):
         return f"{self.question_text} - {self.test}"

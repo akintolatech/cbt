@@ -2,7 +2,9 @@
 {% load static %}
 {% block title %} Package {% endblock %}
 {% block content %}
-
+{% block page_style %}
+<link type="text/css" href="{% static 'style/form.css' %}" rel="stylesheet" />
+{% endblock %}
 <!-- Main dashboard section-->
 <div id="home" class="tabcontent">
 
@@ -42,7 +44,7 @@
         <div class="table-wrapper">
             <div class="row" >
                 <h2 class="table-title">All Tests</h2>
-                <button class="action_btn">Create Test</button>
+                <a href="{% url 'administration:create_test' %}"><button class="action_btn">Create Test</button></a>
             </div>
             
             <table class="modern-table">
