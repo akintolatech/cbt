@@ -3,6 +3,8 @@ from django import forms
 
 from tester.models import Test, Question
 
+class QuestionUploadForm(forms.Form):
+    file = forms.FileField(label='Upload .docx File')
 
 class EditQuestionForm(forms.ModelForm):
     class Meta:

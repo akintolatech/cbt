@@ -10,11 +10,19 @@
 {% endblock %}
 <!-- Main dashboard section-->
 <div id="home">
-
+   
     <a href="{% url 'administration:test_mgmt' %}">
-        <div class="back_icn_container">
-            <img src="{% static 'img/icns/back.svg' %}" />
+
+        <div class="row">
+            <div class="back_container">
+                <div class="back_icn_container" style="margin-right: 12px;">
+                    <img src="{% static 'img/icns/back.svg' %}" />
+                </div>
+                <h2> TEST PORTAL FOR {{ test.title }}</h2>
+            </div>
+            <a href="{% url 'administration:upload_questions' test.id %}"><button class="action_btn">Upload</button></a>
         </div>
+        
     </a>
     {% if messages %}
   <ul>
@@ -35,31 +43,23 @@
             </div>
             <div class="student-details">
                 <p>
-                    Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong> <br/>
-                    Arm: {{ request.user.profile.class_arm }}
+                    <strong style="color:#088ccd;">{{ test.title }}  </strong> <br/>
+                    {{ test.description }}
                 </p>
-
-                <div>
-                    <progress id="progress" value="15" max="60"></progress>
-                    <label for="progress">
-                        15/60<br/>
-                        Position in Class: 8/32
-                    </label>
-                </div>
             </div>
         </div>
 
         <div class="test_box">
 
             <div class="test_header">
-                <h2>{{ app_info.name }}</h2>
-                <h4>{{ test.title }}</h4>
+                <!-- <h2>{{ app_info.name }}</h2> -->
+                <h2>{{ test.title }} TEST QUESTIONS</h2>
                 <h4>{{ test.description }}</h4>
             </div>
 
             <div class="test_body">
 
-                <form id="test-form" method="post" action="{% url 'tester:mark' test.id %}">
+                <form>
                     {% csrf_token %}
 
                     {% for question in questions %}
@@ -101,7 +101,6 @@
                     {% endfor %}
 
                 
-                    <button type="submit" class="pry-btn" id="submit-btn">Save Test</button>
                 </form>
 
             </div>
@@ -109,25 +108,6 @@
         </div>
 
     </div>
-
-
-    {% comment %}
-    <div class="form_container">
-        <h3>Edit Test for {{ test.title }} </h3>
-        
-     
-       
-        <form method="post"  enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <center>
-                <button type="submit">Save Action</button>
-            </center>
-        </form>
-        
-    
-    </div>
-    {% endcomment %}
 
 
 </div>

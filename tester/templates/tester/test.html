@@ -26,7 +26,8 @@
     
                 if (--timer < 0) {
                     clearInterval(interval);
-                    alert("Time is up! Submitting your test...");
+                    // alert("Time is up! Submitting your test...");
+                    // activate modal 
                     document.getElementById("test-form").submit(); // Auto-submit test
                 }
             }, 1000);
@@ -37,7 +38,6 @@
             startTimer(remainingTime, display);
         };
 
-        
     </script>
 
 
@@ -76,21 +76,15 @@
                 </div>
                 <div class="student-details">
                     <p>
-                        Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong> <br/>
-                        Arm: {{ request.user.profile.class_arm }}
+                        Name: <strong style="color:#088ccd;">{{ request.user.username }} </strong>
                     </p>
+
+        
     
-                    <div>
-                        <progress id="progress" value="15" max="60"></progress>
-                        <label for="progress">
-                            15/60<br/>
-                            Position in Class: 8/32
-                        </label>
-                    </div>
                 </div>
             </div>
 
-            <div class="test_box">
+            <div class="test_box" style="overflow: scroll;">
 
                 <div class="test_header">
                     <h2>{{ app_info.name }}</h2>

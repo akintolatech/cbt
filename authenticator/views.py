@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -61,15 +62,8 @@ def register(request):
             class_arm = user_form.cleaned_data.get('class_arm')
             # Create the user profile
             Profile.objects.create(user=new_user, class_arm=class_arm)
-            # context = {
-            #     'new_user': new_user,
-            #     "success": "You have been successfully registered! Login to continue."
-            # }
-            # return render(
-            #     request,
-            #     'authenticator/registration-success.html',
-            #     context
-            # )
+
+            messages.success(request, "Account created successfully.")
             return redirect('authenticator:login')
     else:
         user_form = UserRegistrationForm()

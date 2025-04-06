@@ -33,6 +33,7 @@
     color: var(--pry-color);
     cursor: pointer;
     border: 2px solid var(--pry-color);
+    margin: 0;
 }
 
 html, body {
@@ -1489,6 +1490,15 @@ li {
 
 
 /* User Dashboard Section */
+.back_container {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.back_container h3, .back_container h2 {
+    margin: 0;
+}
 
 .back_icn_container {
     width: 44px;

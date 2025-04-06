@@ -49,25 +49,10 @@ def test_questions(request, test_id):
 
     return render(request, 'tester/test.html', context)
 
-# def test_questions(request, test_id):
-#     if request.user.is_authenticated:
-#         tests = Test.objects.get(id=test_id)
-#         questions = list(tests.question_set.all())
-#         shuffle(questions)  # Shuffle the list of questions
-#
-#         context = {
-#             'test': tests,
-#             'questions': questions,  # Pass the shuffled list of questions to the template
-#             'name': request.user.username,
-#         }
-#
-#         return render(request, 'tester/test.html', context)
-#
-#     else:
-#         return redirect('login')
 
 
 def mark_test(request, test_id):
+
     if not request.user.is_authenticated:
         return redirect('authenticator:register')
 

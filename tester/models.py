@@ -33,6 +33,7 @@ class TestSession(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.test.title} session"
 
+
 class QuestionBank(models.Model):
     question_text = models.CharField(max_length=500)
     img = models.ImageField(upload_to='qimg/', null=True, blank=True)

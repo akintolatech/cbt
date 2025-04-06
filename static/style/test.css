@@ -51,7 +51,7 @@ main {
     margin: auto;
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     align-items: center;
 }
 
@@ -62,7 +62,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .timer_icn_box{
@@ -79,7 +79,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 
@@ -94,7 +94,7 @@ main {
     background-color: white;
     padding: 24px;
     /* box-sizing: border-box; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-bottom: 24px;
 }
 
@@ -106,7 +106,7 @@ main {
 }
 
 .student-details {
-    /* width: 80%; */
+    width: 100%;
     /* display: flex; */
     /* justify-content: space-between; */
     /* margin-bottom: 20px; */
@@ -236,7 +236,7 @@ legend {
         background-color: white;
         padding: 24px;
         /* box-sizing: border-box; */
-        border: 1px solid red;
+        /* border: 1px solid red; */
         margin-bottom: 24px;
     }
 
