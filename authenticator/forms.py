@@ -12,9 +12,9 @@ class LoginForm(forms.Form):
         label="",
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Enter your SVC No (00/0000 format)',
+                'placeholder': 'Enter your 4 Digit PIN (0000 format)',
                 'maxlength': '4',
-                # 'pattern': r'\d{2}/\d{4}'
+                'pattern': r'^\d{4}$'
             }
         )
     )
@@ -34,9 +34,9 @@ class UserRegistrationForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'placeholder': 'Enter your username'}),
             'password': forms.PasswordInput(
                 attrs={
-                    'placeholder': 'Enter your SVC No (00/0000 format)',
+                    'placeholder': 'Create a 4 Digit PIN (0000 format)',
                     'maxlength': '4',
-                    # 'pattern': r'\d{2}/\d{4}'
+                    'pattern': r'^\d{4}$'
                 }
             ),
         }
@@ -61,10 +61,9 @@ class UserEditForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'placeholder': 'Enter your username', "readonly": "readonly"}),
             'password': forms.PasswordInput(
                 attrs={
-                    'placeholder': 'Enter your SVC No (00/0000 format)',
-                    'maxlength': '7',
-                    'pattern': r'\d{2}/\d{4}',
-
+                    'placeholder': 'Enter New PIN (0000 format)',
+                    'maxlength': '4',
+                    'pattern': r'^\d{4}$'
                 }
             ),
         }

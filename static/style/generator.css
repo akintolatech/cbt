@@ -19,16 +19,7 @@
     height: auto;
 }
 
-@media screen  and (max-width:768px) {
-    .gen-container {
-        flex-direction: column;
-    }
 
-    .gen-item {
-        width: 49%;
-        /* border: 1px solid greenyellow; */
-    }
-}
 
 .passport-frame {
     width: 330px;
@@ -38,6 +29,24 @@
     box-sizing: border-box;
     box-shadow: 1px 1px 5px rgba(1, 1, 56, 0.187);
     border-radius: 10px;
+}
+
+
+/* for small screens */
+@media screen  and (max-width:768px) {
+    .gen-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .gen-item {
+        width: 100%;
+        /* border: 1px solid greenyellow; */
+    }
+
+    .passport-frame {
+        width: 100%;
+    }
 }
 
 .passport-frame img {
