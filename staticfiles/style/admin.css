@@ -1,0 +1,81 @@
+.admin-main {
+    /* border: 1px solid red; */
+    height: 87vh;
+    display: flex;
+}
+
+.admin-left {
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid red; */
+    background-color: white;
+}
+
+.admin-menu li {
+    margin: 20px;
+    color: black;
+}
+
+.admin-menu-itm {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.admin-menu-itm p{
+    margin: 0;
+}
+
+
+/* right section */
+
+.admin-right {
+    width: 80%;
+    height: 100%;
+    /* border: 1px solid red; */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.stats-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stats {
+    width: 32%;
+    height: 70px;
+    /* border: 1px solid red; */
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(1, 1, 56, 0.077);
+}
+
+.stats:hover {
+    box-shadow: 3px 3px 20px rgba(1, 1, 56, 0.077);
+}
+
+.stats p, .stats h4 {
+    margin: 0;
+}
+
+progress {
+    margin-right: 20px;
+}
+
+.progress-bar {
+    display: flex;
+}
+
+.admin-card {
+    width: 49%;
+    height: 200px;
+    border: 1px solid red;
+}

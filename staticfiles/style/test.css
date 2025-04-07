@@ -1,0 +1,254 @@
+
+
+.question-image-container {
+    width: 70%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.question-image-container img{
+    width: 100%;
+    height: 100%;
+
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.site_id {
+    width: 40px;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    margin-block: 24px;
+}
+
+
+
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* margin-bottom: 40px; */
+}
+
+.header_wrap {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    align-items: center;
+}
+
+
+.timer_container {
+    width: 80px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.timer_icn_box{
+    width: 40px;
+}
+
+.heading_spacer {
+    height: 70px;
+}
+
+
+.test_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+
+
+
+.bio_card{
+    width: 320px;
+    height: fit-content;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 24px;
+    /* box-sizing: border-box; */
+    /* border: 1px solid red; */
+    margin-bottom: 24px;
+}
+
+.bio-passport {
+    width: 300px;
+    /* height: 76px; */
+    /* border: 1px solid red; */
+    /* margin-right: 24px; */
+}
+
+.student-details {
+    width: 100%;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* margin-bottom: 20px; */
+}
+
+
+.student-details p {
+    margin: 0;
+}
+
+
+.test_box {
+    /* width: calc(100% - 300px); */
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    
+}
+
+
+
+.test_header {
+    text-align: center;
+}
+
+.test_body {
+    padding: var(--container-rad);
+    box-sizing: content-box;
+}
+
+
+
+
+.question-box {
+    height: fit-content;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.question-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+form {
+    padding: 0;
+    
+}
+
+legend {
+    padding: 0;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.options label {
+    display: block;
+    padding: 5px 0;
+}
+
+#submit-btn {
+    width: 100%;
+    /* width: 320px; */
+    /* float: right; */
+    margin: auto;
+    /* background: #007bff; */
+    color: white;
+    border: none;
+    /* padding: 10px 15px; */
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#submit-btn:hover {
+    background: var(--airforce_old_blue);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width:760px){
+
+    main {
+        width: 90%;
+
+    }
+
+    .test_container {
+    
+        flex-direction: row;
+        align-items: start;
+      
+    }
+    
+
+    .bio_card{
+        width: 20%;
+        height: fit-content;
+        display: flex;
+        /* justify-content: space-between; */
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding: 24px;
+        /* box-sizing: border-box; */
+        /* border: 1px solid red; */
+        margin-bottom: 24px;
+    }
+
+    .test_box {
+        /* width: calc(100% - 300px); */
+        width: 75%;
+    }
+
+
+    #submit-btn {
+        width: 320px;
+        float: right;
+    }
+    
+}
