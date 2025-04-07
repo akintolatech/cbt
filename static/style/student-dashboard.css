@@ -150,16 +150,17 @@ a {
     width: 100%;
     /* border: 1px solid red; */
     
+    
 }
 
 .status-tab {
     /* height: 145px; */
     height: 120px;
     background-color: white;
-    /* margin-bottom: 24px; */
     border-radius: var(--rad);
     padding: 24px;
     box-sizing: border-box;
+
 }
 
 .status-tab h3 {
@@ -288,13 +289,8 @@ a {
 
     .sidebar-item {
         width: 30%;
-        height: 100vh;
-        /* background-color: var(--darktheme);
-        color: white;
-        padding-inline: 24px;
-        padding-top: 10px;
-        box-sizing: border-box;
-        overflow: hidden; */
+        height: 100dvh;
+        margin-bottom: 12px;
     }
 
     .status-container {
@@ -314,6 +310,7 @@ a {
 
     .status-tab {
         width: 100%;
+        /* margin-block: 16px; */
     }
 
 }

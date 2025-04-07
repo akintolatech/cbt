@@ -11,6 +11,7 @@
     <!-- <link type="text/css" href="{% static 'style/dashboard.css' %}" rel="stylesheet"/> -->
     <!-- <link type="text/css" href="{% static 'style/styles.css' %}" rel="stylesheet"/> -->
     <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
+    <script src="{% static 'js/jquery.js' %}"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function(){
         const imageInput = document.getElementById('image_input_id');
@@ -41,8 +42,8 @@
 
         <div class="sidebar-item">
 
-            <div class="ham-nav" onclick="Toggle">
-                <img class="ham-icon" src="{% static 'img/ham-close.svg' %}" />
+            <div class="ham-nav">
+                <img class="ham-icon" src="{% static 'img/icns/grid.svg' %}" />
             </div>
 
             <div class="app-id">
