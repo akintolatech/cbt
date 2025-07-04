@@ -71,13 +71,14 @@
                     </div>
                     <h3>Dashboard</h3>
                 </div>
-
+                {% comment %}
                 <div class="dashboard-tab" onclick="tabToggle('accounts', this)" >
                     <div class="icn-box">
                         <img src="{% static 'img/icns/account.svg' %}"  />
                     </div>
                     <h3>Accounts</h3>
                 </div>
+                {% endcomment %}
 
                 <div class="dashboard-tab" onclick="tabToggle('about', this)">
                     <div class="icn-box">
@@ -179,6 +180,7 @@
                 </div>
 
                 <!-- Accounts section -->
+                {% comment %}
                 <div id="accounts" class="tabcontent">
                     <!-- Comprehensive logs -->
                     <div class="logs-container">
@@ -216,6 +218,7 @@
 
                     </div>
                 </div>
+                {% endcomment %}
 
                 <!-- Results Section -->
                 <div id="about" class="tabcontent">
