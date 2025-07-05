@@ -91,7 +91,6 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(61, 50, 253, 0.4);
 }
 
@@ -188,9 +187,9 @@ button:hover {
 button:focus {
     /* background-color: var(--grey);
     color: var(--airforceblue); */
-    /* border: 2px solid var(--airforceblue); */
+    /* border: 2px solid var(--airforceblue);
     width: 95%;
-    height: 49px;
+    height: 49px;*/
 }
 
 

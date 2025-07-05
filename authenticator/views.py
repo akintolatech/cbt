@@ -78,7 +78,7 @@ def register(request):
 def student_dashboard(request):
     user_form = UserEditForm(instance=request.user)
     profile_form = ProfileEditForm(instance=request.user.profile)
-    student_form = request.user.profile.class_arm.class_form
+    student_form = request.user.profile.class_arm
     tests = Test.objects.all().filter(form=student_form)
     results = TestResult.objects.all().filter(user_key=request.user)
 

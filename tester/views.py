@@ -17,7 +17,7 @@ def test_questions(request, test_id):
         return redirect('authenticator:login')
 
     test = get_object_or_404(Test, id=test_id)
-    questions = list(test.question_set.all())
+    questions = list(test.question_set.all())[:60]
     shuffle(questions)
 
     available_results = TestResult.objects.filter(user_key=request.user.id)

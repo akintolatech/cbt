@@ -11,34 +11,63 @@
     <!-- <link type="text/css" href="{% static 'style/student-dashboard.css' %}" rel="stylesheet" /> -->
     <link type="x-icon" href="{% static 'img/bot.ico' %}" rel="icon" />
 
-
     <script>
-        var remainingTime = {{ remaining_time }}; // Get time from backend
-    
-        function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            var interval = setInterval(function () {
-                minutes = Math.floor(timer / 60);
-                seconds = timer % 60;
-    
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.textContent = minutes + ":" + seconds;
-    
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    // alert("Time is up! Submitting your test...");
-                    // activate modal 
-                    document.getElementById("test-form").submit(); // Auto-submit test
-                }
-            }, 1000);
-        }
-    
-        window.onload = function () {
-            var display = document.querySelector('#time');
-            startTimer(remainingTime, display);
-        };
+    var remainingTime = {{ remaining_time }} * 60; // convert minutes to seconds
 
-    </script>
+    function startTimer(duration, display) {
+        var timer = duration, hours, minutes, seconds;
+        var interval = setInterval(function () {
+            hours = Math.floor(timer / 3600);
+            minutes = Math.floor((timer % 3600) / 60);
+            seconds = timer % 60;
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+                document.getElementById("test-form").submit(); // Auto-submit test
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var display = document.querySelector('#time');
+        startTimer(remainingTime, display);
+    };
+</script>
+
+
+<!--    <script>-->
+<!--        var remainingTime = {{ remaining_time }}; // Get time from backend-->
+<!--    -->
+<!--        function startTimer(duration, display) {-->
+<!--            var timer = duration, minutes, seconds;-->
+<!--            var interval = setInterval(function () {-->
+<!--                minutes = Math.floor(timer / 60);-->
+<!--                seconds = timer % 60;-->
+<!--    -->
+<!--                seconds = seconds < 10 ? "0" + seconds : seconds;-->
+<!--                display.textContent = minutes + ":" + seconds;-->
+<!--    -->
+<!--                if (&#45;&#45;timer < 0) {-->
+<!--                    clearInterval(interval);-->
+<!--                    // alert("Time is up! Submitting your test...");-->
+<!--                    // activate modal -->
+<!--                    document.getElementById("test-form").submit(); // Auto-submit test-->
+<!--                }-->
+<!--            }, 1000);-->
+<!--        }-->
+<!--    -->
+<!--        window.onload = function () {-->
+<!--            var display = document.querySelector('#time');-->
+<!--            startTimer(remainingTime, display);-->
+<!--        };-->
+
+<!--    </script>-->
 
 
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from .models import Profile, ClassArm
-
+from django.core.validators import RegexValidator
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -40,7 +40,7 @@ class UserRegistrationForm(forms.ModelForm):
                 }
             ),
         }
-        
+
         labels = {
             'username': '',
             'password': '',

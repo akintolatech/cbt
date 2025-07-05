@@ -15,7 +15,7 @@ class Test(models.Model):
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to='course/')
     is_active = models.BooleanField(default=False)
-    form = models.ForeignKey(Form, on_delete=models.CASCADE)
+    form= models.ForeignKey(ClassArm, on_delete=models.CASCADE)
     mark = models.IntegerField(default=1)
     duration = models.IntegerField(default=30)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
